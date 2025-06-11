@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Timings</title>
+    <link rel="stylesheet" href="result.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Bus Timings</h1>
+        <div id="busTimings" class="timings"></div>
+        <a href="index.html">Go Back</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const busTimingsElement = document.getElementById('busTimings');
+            const timings = JSON.parse(localStorage.getItem('busTimings'));
+
+            if (timings) {
+                busTimingsElement.innerHTML = `<strong>Bus timings from ${timings.source} to ${timings.destination}:</strong><br>` +
+                    timings.times.map(time => `<span>${time}</span>`).join(' | ');
+            } else {
+                busTimingsElement.textContent = 'No bus timings found.';
+            }
+        });
+    </script>
+</body>
+
+</html>
+
+
